@@ -3714,6 +3714,32 @@
                 .catch(error => console.error("Error al obtener usuarios:", error));
         });
 
+        function eliminarUsuario(username) {
+    if (!confirm(`¿Estás seguro de que deseas eliminar a ${username}?`)) {
+        return;
+    }
+
+    fetch(`https://api-db-territorios.onrender.com/usuarios/${username}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.detail); });
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert(data.message);
+        location.reload(); 
+    })
+    .catch(error => {
+        alert(`Error: ${error.message}`);
+    });
+}
+
 
         function editarUsuario(username) {
             Swal.fire({
