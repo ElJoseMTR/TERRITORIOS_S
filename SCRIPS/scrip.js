@@ -14,15 +14,15 @@ document.getElementById("presionarsesion").addEventListener("click",async functi
                 if (data.role === "administrador") {
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", data.role);
-                    window.location.href = "paginas/admin.html";
+                    window.location.href = "Paginas/admin.html";
                 } else if (data.role === "capitan") {
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", data.role)
-                    window.location.href = "paginas/inicio.html";
+                    window.location.href = "Paginas/inicio.html";
                 } else if(data.role === "usuario"){
                     localStorage.setItem("username", username);
                     localStorage.setItem("role", data.role)
-                    window.location.href = "paginas/inicioE.html";
+                    window.location.href = "Paginas/inicioe.html";
                 }
             } else {
                 alert("Usuario o contraseña incorrectos.");
