@@ -16,11 +16,116 @@
     background-color: #3f454b;
 }
 
+
+.crear-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #3f454b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.crear-btn:hover {
+    background-color: #3f454b;
+}
+
+.botoneliminarterri-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #3f454b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botoneliminarterri:hover {
+    background-color: #3f454b;
+}
+
+
+
+.input-crear {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #3f454b;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.input-crear::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.input-crear:focus {
+    border-color: #3f454b;
+    box-shadow: 0 0 10px rgba(79, 80, 79, 0.5);
+}
+
+
+#listaMapasContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+#listaMapasContainers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.styled-select {
+    width: 250px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #5b6168;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.styled-select:hover {
+    background-color: #e8f5e9;
+    border-color: #5b6168;
+}
+
+.styled-select:focus {
+    border-color: #5b6168;
+    box-shadow: 0px 0px 8px rgba(76, 175, 80, 0.8);
+}
+
+
 .Boton_edit {
     background-color: #5b6168;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 6px 10px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 8px;
@@ -47,7 +152,7 @@
     background-color: #5b6168; 
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 6px 10px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 8px; 
@@ -89,7 +194,7 @@
 
 .botoneliminar{
     position: absolute;
-    bottom: 200px; 
+    bottom: -590px; 
     background-color: #5b6168; 
     color: white; 
     border: none;
@@ -101,4 +206,65 @@
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     display: inline-block;
+}
+.miselect{
+    margin-top: 90px;
+    width: 200px;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #232524;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .miselect:hover {
+    border-color: #232524;
+  }
+
+  .miselect:focus {
+    border-color: #232524;
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+  }
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #5b6168;
+    color: white;
+}
+
+button {
+    padding: 3px 7px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.editar {
+    background-color: #f0ad4e;
+    color: white;
+}
+
+.eliminar {
+    background-color: #d9534f;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
 }

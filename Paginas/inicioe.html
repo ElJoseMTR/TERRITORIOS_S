@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/styleMapa.css">
+    <script src="../SCRIPS/scripUsuario.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+
+
+        .btn-hoy {
+            background-color: #363836;
+            color: white;
+        }
+
+        .btn-seleccionar {
+            background-color: #363836;
+            color: white;
+        }
+
+        .btn-cerrar {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="inicio">
+
+    <div class="taskbar">
+        <img src="https://cdn-icons-png.flaticon.com/128/2921/2921222.png" class="icon" onclick="openExhibidor()">
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828490.png" class="icon" onclick="exit()">
+    </div>
+
+
+    <div id="fechaModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Selecciona una fecha</h3><br>
+            <button class="btn-hoy" onclick="setFechaHoy()">Fecha de hoy</button>
+            <button class="btn-seleccionar" onclick="mostrarInputFecha()">Seleccionar fecha</button>
+            <br>
+            <input type="date" id="fechaInput" style="display: none;" onchange="guardarFecha()">
+            <br>
+            <button class="btn-cerrar" onclick="cerrarModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="menu" id="appexhibidor">
+        <h1>Exhibidores</h1>
+        <div id="listaExhibidores">
+            <button class="crear-btn" onclick="mostrarModal(this)">Exhibidor_H_Eloina</button><br>
+            <button class="crear-btn" onclick="mostrarModal(this)">Exhibidor_FCastañeda</button><br>
+            <button class="crear-btn" onclick="mostrarModal(this)">Exhibidor_Parquesito</button><br>
+            <button class="crear-btn" onclick="mostrarModal(this)">Exhibidor_Donde_Toño</button><br>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let userRole = localStorage.getItem("role");
+            if (userRole != "usuario") {
+                alert("No tienes acceso. Inicia sesión primero.");
+                localStorage.clear();
+                window.location.href = "../index.html";
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="../CSS/styleMapa.css">
+</body>
+
+</html>

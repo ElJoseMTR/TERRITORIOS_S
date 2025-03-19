@@ -7,14 +7,16 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/styleMapa.css">
-    <script src="../SCRIPS/scripcapitan.js"></script>
+    <script src="../SCRIPS/scripadmin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         .modal {
             display: none;
             position: fixed;
@@ -59,12 +61,13 @@
 <body class="inicio">
 
     <div class="taskbar">
+        <img src="https://cdn-icons-png.flaticon.com/128/619/619153.png" class="icon" onclick="openInicio()">
         <img src="https://cdn-icons-png.flaticon.com/128/2991/2991231.png" class="icon" onclick="openMapa()">
-        <img src="https://cdn-icons-png.flaticon.com/128/1829/1829586.png" class="icon" onclick="openImagen()">
         <img src="https://cdn-icons-png.flaticon.com/128/2921/2921222.png" class="icon" onclick="openExhibidor()">
-        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828490.png" class="icon" onclick="exit()">
-    </div>
+        <img src="https://cdn-icons-png.flaticon.com/128/706/706797.png" class="icon" onclick="openUsuarios()">
+        <img src="https://cdn-icons-png.flaticon.com/128/732/732220.png" class="icon" onclick="openRegistro()">
 
+    </div>
 
     <div id="fechaModal" class="modal" style="display: none;">
         <div class="modal-content">
@@ -78,6 +81,17 @@
         </div>
     </div>
 
+
+    <div class="menu" id="appinicio">
+        <h1>Crear Territorio</h1><br>
+        <hr><br>
+        <input type="text" id="nombremapa" class="input-crear" placeholder="Ingrese el nombre"><br><br>
+
+        <button id="CrearBoton" class="crear-btn" onclick="crearmapa()">Crear</button><br>
+        <hr><br>
+        <button id="salir" class="crear-btn" onclick="salir()">Cerrar sesión</button><br><hr>
+    </div>
+
     <div class="menu" id="appexhibidor">
         <h1>Exhibidores</h1>
         <div id="listaExhibidores">
@@ -88,12 +102,123 @@
         </div>
     </div>
 
-    <div class="menu" id="appimagen">
-        <h1>MAPA</h1>
-        <img src="../IMG/MAPA.png" style="width: 280px; height: auto;">
+    <div class="menu" id="appusuarios">
+        <h1>Usuarios</h1> <br><button class="crear-btn" onclick="crearUsuario()" >Crear Usuario</button >
+        <div id="listaUsuarios"></div>
+    </div>
+
+    <div class="menu" id="appregistro">
+        <h1>Registro</h1><br>
+        <button id="botonExhibidores" class="Boton_edit" onclick="registroExhibidores()">Exhibidores</button>
+        <button id="botonTerritorio" class="Boton_edit" onclick="registroTerritorios()">Territorios</button>
+
+        <div id="registroTerritorio" class="registroTerritorio" style="display: none; margin-top: -70px;">
+
+            <div id="listaMapasRegistro"></div>
+
+
+
+            <div id="botonesRegistroTerritorios" class="botonesRegistroTerritorios"
+                style="display: none; margin-top: -100px;">
+                <button style="display: block; width: 100%;
+                padding: 10px;
+                margin: 200px 0 5px 0;
+                background-color: #3f454b;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;" class="botoneliminarterri" id="botoneliminarterri"
+                    onclick="clickEliminarTerritorio()">Eliminar</button>
+
+                    <button style="display: block; width: 100%;
+                padding: 10px;
+                margin: 100px 0 5px 0;
+                background-color: #3f454b;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;" class="botoneliminarterri" id="botoneliminarterri"
+                    onclick="clickVistaTerritorio()">Vista</button>
+            </div>
+          
+
+
+        </div>
+        <div id="Lista" class="Lista" style="display: none; margin-top: 10px;">
+            <button class="crear-btn" onclick="resgistroEloina()">Exhibidor_Hermana_Eloina</button><br>
+            <button class="crear-btn" onclick="registroCastañeda()">Exhibidor_Fla_Castañeda</button><br>
+            <button class="crear-btn" onclick="registroParquesito()">Exhibidor_Parquesito</button><br>
+            <button class="crear-btn" onclick="registroToño()">Exhibidor_Donde_Toño</button><br>
+        </div>
+        
+
+
+        <div id="selecctordeFecha" class="selecctordeFecha" style="display: none; margin-top: 10px;">
+
+            <div class="año">
+            <label for="año">Selecciona un año:</label>
+            <select id="año" onchange="añoSeleccionado()">
+                <option value="SELECCIONA">SELECCIONA</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+            </select>
+        </div>
+        <div id="mes" class="mes" style="display: none; margin-top: 10px;">
+            <label for="mes">Selecciona un mes:</label>
+            <select id="mess" onchange="mesSeleccionado()">
+                <option value="SELECCIONA">SELECCIONA</option>
+                <option value="Enero">Enero</option>
+                <option value="Febrero">Febrero</option>
+                <option value="Marzo">Marzo</option>
+                <option value="Abril">Abril</option>
+                <option value="Mayo">Mayo</option>
+                <option value="Junio">Junio</option>
+                <option value="Julio">Julio</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Septiembre">Septiembre</option>
+                <option value="Octubre">Octubre</option>
+                <option value="Noviembre">Noviembre</option>
+                <option value="Diciembre">Diciembre</option>
+            </select>
+        </div>
+        <div id="datos" class="datos" style="display: none; margin-top: 10px;">
+            <p id="usos">Usos: 0</p><br>
+            <select id="exhibidoresLista" onchange="registrodeElExhibidor()">
+                <option>SELECCIONA</option>
+            </select><br>
+
+            <button class="crear-btn" onclick="EliminarRegistroExhibidor()">Eliminar</button>
+        </div>
+        </div>
+
+        <div id="registroExhibidores" class="registroExhibidores" style="display: none; margin-top: -70px;">
+
+            <div id="listaExhibidoresRegistro"></div>
+
+
+
+            <div id="botonesRegistroTerritorios" class="botonesRegistroTerritorios"
+                style="display: none; margin-top: -100px;">
+                <button style="display: block; width: 100%;
+                padding: 10px;
+                margin: 200px 0 5px 0;
+                background-color: #3f454b;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;" class="botoneliminarterri" id="botoneliminarterri"
+                    onclick="clickEliminarTerritorio()">Eliminar</button>
+
+            </div>
+
+        </div>
+
 
     </div>
-    
+
     <!------------------TERRITORIO 1---------------------------------------------------------------------->
     <div class="menu" id="appmapa">
         <div id="tituloSelector">
@@ -105,7 +230,15 @@
             <br>
             <hr>
         </div>
-
+        <div class="overlay" id="overlay">
+            <div class="formulario-editar">
+                <h2>Editar Contraseña</h2>
+                <p id="usuarioEditado"></p>
+                <input type="password" id="nuevaPassword" placeholder="Nueva contraseña (opcional)">
+                <button class="btn-guardar" onclick="guardarNuevaPassword()">Guardar</button>
+                <button class="btn-cancelar" onclick="cerrarFormulario()">Cancelar</button>
+            </div>
+        </div>
 
 
         <div id="mapaCentro1" class="mapaCentro1" style="display: none; margin-top: -70px;">
@@ -2231,8 +2364,8 @@
 
         <!---------------------------------------------------------------------------------------->
         <div id="botonesEdit" class="botonesEdit" style="display: none; margin-top: -100px;">
-            <button class="Boton_edit" id="botoneditar" onclick="clickeditar()">Editar</button><button
-                onclick="clickguardar()" id="botonguardar" class="Boton_edit">Guardar</button>
+            <button class="Boton_edit" id="botoneditar" onclick="clickeditar()">Editar</button>
+            <button onclick="clickguardar()" id="botonguardar" class="Boton_edit">Guardar</button>
 
             <select name="gruposelect" id="gruposelect">
                 <option value="grupo1" selected>Grupo 1</option>
@@ -2246,19 +2379,17 @@
 
     </div>
 
-    <script src="../SCRIPS/scripcapitan.js"></script>
+
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
             let userRole = localStorage.getItem("role");
 
-            
-                if (userRole != "capitan"){
+                if (userRole != "administrador"){
                     alert("No tienes acceso. Inicia sesión primero.");
                     localStorage.clear();
                 window.location.href = "../index.html";
-                }
-            
+            }
         });
 
         document.getElementById("gruposelect").addEventListener("change", function () {
@@ -2354,7 +2485,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2367,7 +2498,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2380,7 +2511,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2393,7 +2524,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2406,7 +2537,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2419,7 +2550,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2432,7 +2563,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2445,7 +2576,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2458,7 +2589,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2471,7 +2602,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2484,7 +2615,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2497,7 +2628,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2510,7 +2641,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2523,7 +2654,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2536,7 +2667,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2548,7 +2679,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2561,7 +2692,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2576,7 +2707,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2589,7 +2720,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2602,7 +2733,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2615,7 +2746,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2628,7 +2759,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2641,7 +2772,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2654,7 +2785,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2667,7 +2798,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2680,7 +2811,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2693,7 +2824,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2706,7 +2837,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2719,7 +2850,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2732,7 +2863,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2745,7 +2876,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2758,7 +2889,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2771,7 +2902,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2784,7 +2915,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2797,7 +2928,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2810,7 +2941,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2823,7 +2954,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2836,7 +2967,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2849,7 +2980,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2862,7 +2993,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2875,7 +3006,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2888,7 +3019,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2902,7 +3033,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2915,7 +3046,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2928,7 +3059,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2941,7 +3072,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2954,7 +3085,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2967,7 +3098,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2980,7 +3111,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -2993,7 +3124,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3006,7 +3137,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3019,7 +3150,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3032,7 +3163,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3045,7 +3176,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3058,7 +3189,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3071,7 +3202,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3084,7 +3215,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3098,7 +3229,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3111,7 +3242,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3124,7 +3255,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3137,7 +3268,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3150,7 +3281,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3163,7 +3294,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3176,7 +3307,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3189,7 +3320,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3202,7 +3333,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3216,7 +3347,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3229,7 +3360,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3242,7 +3373,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3255,7 +3386,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3268,7 +3399,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3281,7 +3412,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3294,7 +3425,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3307,7 +3438,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3321,7 +3452,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3334,7 +3465,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3347,7 +3478,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3360,7 +3491,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3373,7 +3504,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3386,7 +3517,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3399,7 +3530,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3412,7 +3543,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3425,7 +3556,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3438,7 +3569,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3451,7 +3582,7 @@
                                         if (data.error) {
                                             console.error("Error:", data.error);
                                         } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
+                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
                                         }
                                     })
                                     .catch(error => console.error("Error al buscar la fecha del mapa:", error));
@@ -3546,6 +3677,157 @@
                 });
             });
         }
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('https://api-db-territorios.onrender.com/usuarios')
+                .then(response => response.json())
+                .then(data => {
+                    const listaUsuarios = document.getElementById("listaUsuarios");
+
+                    let tablaHTML = `
+                <table border="1">
+                    <tr>
+                        <th>Username</th>
+                        <th>Rol</th>
+                        <th>Eliminar</th>
+                    </tr>
+            `;
+
+                    data.forEach(usuario => {
+                        tablaHTML += `
+                    <tr>
+                        <td>${usuario.username}</td>
+                        <td>${usuario.rol}</td>
+                        <td>
+                            <button class="eliminar" onclick="eliminarUsuario('${usuario.username}')">Eliminar</button>
+                            <button class="editar" onclick="editarUsuario('${usuario.username}')">Editar</button>
+                        </td>
+                    </tr>
+                `;
+                    });
+
+                    tablaHTML += `</table>`;
+                    listaUsuarios.innerHTML = tablaHTML;
+                })
+                .catch(error => console.error("Error al obtener usuarios:", error));
+        });
+
+
+        function editarUsuario(username) {
+            Swal.fire({
+                title: `Editar a ${username}`,
+                input: "radio",
+                inputOptions: {
+                    password: "Contraseña",
+                    role: "Role"
+                },
+                inputValidator: (value) => {
+                    if (!value) {
+                        return "Debes seleccionar para editar";
+                    }
+                },
+                showCancelButton: true,
+                confirmButtonText: "Editar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed && result.value) {
+                    let campo = result.value; 
+
+                    if (campo === "password") {
+                        editarUsuarioPassword(username);
+                    } else if (campo === "role") {
+                        editarUsuarioRol(username);
+                    }
+                } else {
+                    Swal.fire("CANCELADA", "No se realizó ningún cambio.", "info");
+                }
+            });
+        }
+
+
+        function editarUsuarioPassword(username) {
+            Swal.fire({
+                title: `Editar contraseña de ${username}`,
+                input: "password",
+                inputPlaceholder: "Nueva contraseña",
+                showCancelButton: true,
+                confirmButtonText: "Actualizar",
+                cancelButtonText: "Cancelar",
+                inputValidator: (value) => {
+                    if (value.length > 10) {
+                        return "La contraseña debe tener menos de 10 caracteres";
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    actualizarPassword(username, result.value);
+                } else {
+                    Swal.fire("CANCELADA", "No se realizó ningún cambio.", "info");
+                }
+            });
+        }
+
+        function actualizarPassword(username, nuevaPassword) {
+            fetch(`https://api-db-territorios.onrender.com/usuariosupdatepassword/${username}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ password: nuevaPassword })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    Swal.fire("Éxito", `La contraseña de ${username} ha sido actualizada.`, "success");
+                    console.log(data);
+                })
+                .catch(error => {
+                    Swal.fire("Error", "No se pudo actualizar la contraseña.", "error");
+                    console.error("Error:", error);
+                });
+        }
+
+        function editarUsuarioRol(username) {
+            Swal.fire({
+                title: `Selecciona un rol para ${username}`,
+                input: "radio",
+                inputOptions: {
+                    administrador: "administrador",
+                    capitan: "capitan",
+                    exhibidor: "usuario"
+                },
+                inputValidator: (value) => {
+                    if (!value) {
+                        return "Debes seleccionar un rol";
+                    }
+                },
+                showCancelButton: true,
+                confirmButtonText: "Actualizar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed && result.value) {
+                    actualizarRol(username, result.value);
+                } else {
+                    Swal.fire("CANCELADA", "No se realizó ningún cambio.", "info");
+                }
+            });
+        }
+
+        function actualizarRol(username, nuevoRol) {
+            Swal.fire(`${username} ahora es ${nuevoRol.charAt(0).toUpperCase() + nuevoRol.slice(1)}.`);
+            fetch(`https://api-db-territorios.onrender.com/usuariosupdaterole/${username}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ nuevo_rol: nuevoRol })
+            })
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+
+
 
     </script>
     <link rel="stylesheet" href="../CSS/styleMapa.css">
