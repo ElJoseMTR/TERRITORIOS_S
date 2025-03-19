@@ -2308,1212 +2308,1212 @@
 
         document.addEventListener("DOMContentLoaded", function () {
 
-            document.querySelectorAll("path").forEach(path => {
-                path.addEventListener("click", function () {
-                    const estado = localStorage.getItem("vista");
-                    const mapa = localStorage.getItem("Territorio");
-                    const grupo = localStorage.getItem("Centro");
+document.querySelectorAll("path").forEach(path => {
+    path.addEventListener("click", function () {
+        const estado = localStorage.getItem("vista");
+        const mapa = localStorage.getItem("Territorio");
+        const grupo = localStorage.getItem("Centro");
 
-                    if (!mapa) {
-                        alert("No hay un mapa seleccionado.");
+        if (!mapa) {
+            alert("No hay un mapa seleccionado.");
+            return;
+
+        }
+        let nombre = `${this.id}`;
+        let fecha = `Error: base de datos`;
+
+
+
+
+        if (estado === "ver") {
+            let stringnombre = `a`
+            let url = `https://api-db-territorios.onrender.com/getFechaMapa?territorio=${encodeURIComponent(mapa)}&grupo=${encodeURIComponent(grupo)}&mapa=${encodeURIComponent(nombre)}`;
+
+            switch (`${this.id}`) {
+                case "MFCriales":
+                    stringnombre = `Manzana: Familia Criales`
+
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaLaPoderosa":
+
+                    stringnombre = `Manzana: Tienda La Poderosa`;
+
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFVargas":
+                    stringnombre = (`Manzana: Familia Vargas`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFPolanco":
+                    stringnombre = (`Manzana: Familia Polanco`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFrenteSalon":
+                    stringnombre = (`Manzana: Al Frente Del Salon Del Reino`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MCasaCarnaval":
+                    stringnombre = (`Manzana: Casa Del Carnaval`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFCarvajal":
+                    stringnombre = (`Manzana: Donde Vive La Familia Carvajal`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MLaBotella":
+                    stringnombre = (`Manzana: La Botella`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFEcheverria":
+                    stringnombre = (`Manzana: Familia Echeverria`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHIslanda":
+                    stringnombre = (`Manzana: Hermana Islanda Romero`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFCastro":
+                    stringnombre = (`Manzana: Familia Castro`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFMaldonado":
+                    stringnombre = (`Manzana: Familia Maldonado`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MSalon":
+                    stringnombre = (`Manzana: Salon Del Reino`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MChacon":
+                    stringnombre = (`Manzana: Familia Chacon Cassiani`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFSantiagoChacon":
+                    stringnombre = (`Manzana: Familia Santiago Chacon`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MIslita":
+                    stringnombre = (`Manzana: Islita`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaSureña":
+                    stringnombre = (`Manzana: Familia Tienda Sureña`); fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MBicicletasBikebar":
+                    stringnombre = (`Manzana: Taller De Bicicleta BikeBar`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+
+                //GRUPO 2
+                case "MFCera":
+                    stringnombre = (`Manzana: Familia Cera Retamoso`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFCantillo":
+                    stringnombre = (`Manzana: Familia Cantillo`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MColegioCorazonSantuario":
+                    stringnombre = (`Manzana: Colegio El Corazon Del Santuario`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MSede":
+                    stringnombre = (`Manzana: Sede`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MMiselaneaEdgar":
+                    stringnombre = (`Manzana: Miselanea Del Señor Edgar`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFNuma":
+                    stringnombre = (`Manzana: Familia Numa`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFCastañeda":
+                    stringnombre = (`Manzana: Familia Castañeda Gomez`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHJulia":
+                    stringnombre = (`Manzana: Hermana Julia Lobelo`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MParquecito":
+                    stringnombre = (`Manzana: Parquesito`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaDiosConNosotros":
+                    stringnombre = (`Manzana: Tienda Dios Con Nosotros`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaMiAngelDeAmor":
+                    stringnombre = (`Manzana: Tienda Mi Angel De Amor`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MLos6Hermanos":
+                    stringnombre = (`Manzana: Los 6 Hermanos`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHKelly":
+                    stringnombre = (`Manzana: Hermana Paola Prieto`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFMartinez":
+                    stringnombre = (`Manzana: Familia Martinez`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MAlFrenteFMartinez":
+                    stringnombre = (`Manzana: Al Frente La Familia Martinez`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaMerkanubar":
+                    stringnombre = (`Manzana: Tienda Merkanubar`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MAlLadoParqueAbandonado":
+                    stringnombre = (`Manzana: Al Lado Del Parque Abandonado`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MAlLadoTiendaPrecioEsCorrecto":
+                    stringnombre = (`Manzana: Al Lado De La Tienda El Precio Es Correcto`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaPrecioEsCorrecto":
+                    stringnombre = (`Manzana: Tienda El Precio Es Correcto`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MParqueGoldaMeir":
+                    stringnombre = (`Manzana: Parque GolaMeir`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MAlLadoFCoronado":
+                    stringnombre = (`Manzana: Al Lado De La Familia Coronado`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFCoronado":
+                    stringnombre = (`Manzana: Familia Coronado Montaño`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MParqueAbandonado":
+                    stringnombre = (`Manzana: Parque Abandonado`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFrenteFSuarez":
+                    stringnombre = (`Manzana: Frente La Familia Suarez`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFarmaciaJyH":
+                    stringnombre = (`Manzana: Farmacia JyH`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                //GRUPO 3
+                case "MFPerezSegura":
+                    stringnombre = (`Manzana: Familia Perez Segura`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFPerezCarvajal":
+                    stringnombre = (`Manzana: Familia Perez Carvajal`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaLaRenovacion":
+                    stringnombre = (`Manzana: Tienda La Renovacion`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MPanaderiaElLider":
+                    stringnombre = (`Manzana: Panaderia El Lider`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MLosGallos":
+                    stringnombre = (`Manzana: Los Gallos / Bodega De La Ferreteria Santuario`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MMuebleriaLuxuryHouse":
+                    stringnombre = (`Manzana: Muebleria Luxury House`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaLaFeEnDios":
+                    stringnombre = (`Manzana: Tienda La Fe En Dios De La 52`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MVariedadesFenicia":
+                    stringnombre = (`Manzana: Variedades Fenicia`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaElBacan":
+                    stringnombre = (`Manzana: Tienda El Bacan`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MEstaderoLaRetoba":
+                    stringnombre = (`Manzana: Estadero La Retoba`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTallerCarlos":
+                    stringnombre = (`Manzana: Taller Carlos`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MSeñoraLevix":
+                    stringnombre = (`Manzana: Donde Vive La Señora Levix`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHFrancelina":
+                    stringnombre = (`Manzana: Hermana Francelina Muñoz`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaElEden":
+                    stringnombre = (`Manzana: Tienda El Eden`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaDondeTotto":
+                    stringnombre = (`Manzana: Tienda Donde Totto`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaNuevoRenacer":
+                    stringnombre = (`Manzana: Tienda Nuevo Renacer`);
+
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MAlLadoDondeTotto":
+                    stringnombre = (`Manzana: Al Lado De La Tienda Donde Totto`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFSuarez":
+                    stringnombre = (`Manzana: Familia Suarez`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MLasPiedras":
+                    stringnombre = (`Las Piedras`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MLaIslita3":
+                    stringnombre = (`Manzana: La Islita`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFrenteFTapia":
+                    stringnombre = (`Manzana: Frente La Familia Tapia`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFTapia":
+                    stringnombre = (`Manzana: Familia Tapia`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaRivero":
+                    stringnombre = (`Manzana: Tienda Rivero`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MLaBombonera":
+                    stringnombre = (`Manzana: La Bombonera`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                //GRUPO 4
+                case "MBillaresLasPernicias":
+                    stringnombre = (`Manzana: Billares Las Pernicias`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFCeren":
+                    stringnombre = (`Manzana: Familia Ceren`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MColegioJesusDeNazareth":
+                    stringnombre = (`Manzana: Colegio Jesus De Nazareth`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHBelen":
+                    stringnombre = (`Manzana: Hermana Belen Garcia`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MColegioAtanacioGirardot":
+                    stringnombre = (`Manzana: Colegioo Atanacio Girardot`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFTorregrosa":
+                    stringnombre = (`Manzana: Familia Torregrosa`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFrenteLaPanaderiaLaEsquinaDel":
+                    stringnombre = (`Manzana: Frente La Panaderia La Esquina Del Sabor`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MTiendaJJ":
+                    stringnombre = (`Manzana: Tienda JJ`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+
+                case "MFrenteColegioLasAmericas":
+                    stringnombre = (`Manzana: Frente Al Colegio Las Americas`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MVariedadesSofy":
+                    stringnombre = (`Manzana: Variedades Sofy`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHGloria":
+                    stringnombre = (`Manzana: Hermana Gloria Vega`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHGloria2":
+                    stringnombre = (`Manzana: Hermana Gloria Vega2`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MHEloina":
+                    stringnombre = (`Manzana: Hermana Eloina Palacio`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MPanaderiaEsquinaDelSabor":
+                    stringnombre = (`Manzana: Panaderia La Esquina Del Sabor`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MRestauranteChino":
+                    stringnombre = (`Manzana: Restaurante Chino`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFerreteriaElAmigo":
+                    stringnombre = (`Manzana: Ferreteria El Amigo`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MIslitaDelBrazil":
+                    stringnombre = (`Manzana: Islita Del Brazil`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MFundacionChildrenInternationa":
+                    stringnombre = (`Manzana: Fundacion Children International`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                case "MAlLadoFundacionChildrenIntern":
+                    stringnombre = (`Manzana: Al Lado De La Fundacion Children International`);
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                console.error("Error:", data.error);
+                            } else {
+                                alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
+                            }
+                        })
+                        .catch(error => console.error("Error al buscar la fecha del mapa:", error));
+                    break;
+                default:
+                    break;
+            }
+
+        } else if (estado === "edita") {
+            let nombre = this.id;
+            let territorio = localStorage.getItem("Territorio");
+
+            showSelectionDialog()
+                .then(opcion => {
+                    if (!opcion) return;
+
+                    let nuevoValor = null;
+                    let nuevoColor = "green";
+                    let nuevoHecho = "no";
+
+                    if (opcion === "realizada") {
+                        nuevoColor = "red";
+                        nuevoValor = new Date().toISOString().split("T")[0];
+                        nuevoHecho = "sí";
+                    } else if (opcion === "incompleta") {
+                        nuevoColor = "yellow";
+                        nuevoValor = new Date().toISOString().split("T")[0];
+                        nuevoHecho = "falta";
+                    }
+
+                    this.setAttribute("fill", nuevoColor);
+
+                    if (!territorio || !nombre || !nuevoHecho) {
+                        console.error("Datos inválidos para la actualización");
                         return;
-
-                    }
-                    let nombre = `${this.id}`;
-                    let fecha = `Error: base de datos`;
-
-
-
-
-                    if (estado === "ver") {
-                        let stringnombre = `a`
-                        let url = `https://api-db-territorios.onrender.com/getFechaMapa?territorio=${encodeURIComponent(mapa)}&grupo=${encodeURIComponent(grupo)}&mapa=${encodeURIComponent(nombre)}`;
-
-                        switch (`${this.id}`) {
-                            case "MFCriales":
-                                stringnombre = `Manzana: Familia Criales`
-
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"} \nUsuario: ${data.username ? data.username : "Desconocido"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaLaPoderosa":
-
-                                stringnombre = `Manzana: Tienda La Poderosa`;
-
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFVargas":
-                                stringnombre = (`Manzana: Familia Vargas`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFPolanco":
-                                stringnombre = (`Manzana: Familia Polanco`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFrenteSalon":
-                                stringnombre = (`Manzana: Al Frente Del Salon Del Reino`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MCasaCarnaval":
-                                stringnombre = (`Manzana: Casa Del Carnaval`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFCarvajal":
-                                stringnombre = (`Manzana: Donde Vive La Familia Carvajal`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MLaBotella":
-                                stringnombre = (`Manzana: La Botella`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFEcheverria":
-                                stringnombre = (`Manzana: Familia Echeverria`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHIslanda":
-                                stringnombre = (`Manzana: Hermana Islanda Romero`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFCastro":
-                                stringnombre = (`Manzana: Familia Castro`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFMaldonado":
-                                stringnombre = (`Manzana: Familia Maldonado`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MSalon":
-                                stringnombre = (`Manzana: Salon Del Reino`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MChacon":
-                                stringnombre = (`Manzana: Familia Chacon Cassiani`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFSantiagoChacon":
-                                stringnombre = (`Manzana: Familia Santiago Chacon`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MIslita":
-                                stringnombre = (`Manzana: Islita`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaSureña":
-                                stringnombre = (`Manzana: Familia Tienda Sureña`); fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MBicicletasBikebar":
-                                stringnombre = (`Manzana: Taller De Bicicleta BikeBar`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-
-                            //GRUPO 2
-                            case "MFCera":
-                                stringnombre = (`Manzana: Familia Cera Retamoso`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFCantillo":
-                                stringnombre = (`Manzana: Familia Cantillo`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MColegioCorazonSantuario":
-                                stringnombre = (`Manzana: Colegio El Corazon Del Santuario`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MSede":
-                                stringnombre = (`Manzana: Sede`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MMiselaneaEdgar":
-                                stringnombre = (`Manzana: Miselanea Del Señor Edgar`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFNuma":
-                                stringnombre = (`Manzana: Familia Numa`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFCastañeda":
-                                stringnombre = (`Manzana: Familia Castañeda Gomez`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHJulia":
-                                stringnombre = (`Manzana: Hermana Julia Lobelo`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MParquecito":
-                                stringnombre = (`Manzana: Parquesito`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaDiosConNosotros":
-                                stringnombre = (`Manzana: Tienda Dios Con Nosotros`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaMiAngelDeAmor":
-                                stringnombre = (`Manzana: Tienda Mi Angel De Amor`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MLos6Hermanos":
-                                stringnombre = (`Manzana: Los 6 Hermanos`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHKelly":
-                                stringnombre = (`Manzana: Hermana Paola Prieto`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFMartinez":
-                                stringnombre = (`Manzana: Familia Martinez`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MAlFrenteFMartinez":
-                                stringnombre = (`Manzana: Al Frente La Familia Martinez`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaMerkanubar":
-                                stringnombre = (`Manzana: Tienda Merkanubar`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MAlLadoParqueAbandonado":
-                                stringnombre = (`Manzana: Al Lado Del Parque Abandonado`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MAlLadoTiendaPrecioEsCorrecto":
-                                stringnombre = (`Manzana: Al Lado De La Tienda El Precio Es Correcto`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaPrecioEsCorrecto":
-                                stringnombre = (`Manzana: Tienda El Precio Es Correcto`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MParqueGoldaMeir":
-                                stringnombre = (`Manzana: Parque GolaMeir`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MAlLadoFCoronado":
-                                stringnombre = (`Manzana: Al Lado De La Familia Coronado`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFCoronado":
-                                stringnombre = (`Manzana: Familia Coronado Montaño`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MParqueAbandonado":
-                                stringnombre = (`Manzana: Parque Abandonado`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFrenteFSuarez":
-                                stringnombre = (`Manzana: Frente La Familia Suarez`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFarmaciaJyH":
-                                stringnombre = (`Manzana: Farmacia JyH`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            //GRUPO 3
-                            case "MFPerezSegura":
-                                stringnombre = (`Manzana: Familia Perez Segura`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFPerezCarvajal":
-                                stringnombre = (`Manzana: Familia Perez Carvajal`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaLaRenovacion":
-                                stringnombre = (`Manzana: Tienda La Renovacion`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MPanaderiaElLider":
-                                stringnombre = (`Manzana: Panaderia El Lider`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MLosGallos":
-                                stringnombre = (`Manzana: Los Gallos / Bodega De La Ferreteria Santuario`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MMuebleriaLuxuryHouse":
-                                stringnombre = (`Manzana: Muebleria Luxury House`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaLaFeEnDios":
-                                stringnombre = (`Manzana: Tienda La Fe En Dios De La 52`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MVariedadesFenicia":
-                                stringnombre = (`Manzana: Variedades Fenicia`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaElBacan":
-                                stringnombre = (`Manzana: Tienda El Bacan`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MEstaderoLaRetoba":
-                                stringnombre = (`Manzana: Estadero La Retoba`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTallerCarlos":
-                                stringnombre = (`Manzana: Taller Carlos`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MSeñoraLevix":
-                                stringnombre = (`Manzana: Donde Vive La Señora Levix`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHFrancelina":
-                                stringnombre = (`Manzana: Hermana Francelina Muñoz`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaElEden":
-                                stringnombre = (`Manzana: Tienda El Eden`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaDondeTotto":
-                                stringnombre = (`Manzana: Tienda Donde Totto`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaNuevoRenacer":
-                                stringnombre = (`Manzana: Tienda Nuevo Renacer`);
-
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MAlLadoDondeTotto":
-                                stringnombre = (`Manzana: Al Lado De La Tienda Donde Totto`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFSuarez":
-                                stringnombre = (`Manzana: Familia Suarez`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MLasPiedras":
-                                stringnombre = (`Las Piedras`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MLaIslita3":
-                                stringnombre = (`Manzana: La Islita`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFrenteFTapia":
-                                stringnombre = (`Manzana: Frente La Familia Tapia`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFTapia":
-                                stringnombre = (`Manzana: Familia Tapia`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaRivero":
-                                stringnombre = (`Manzana: Tienda Rivero`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MLaBombonera":
-                                stringnombre = (`Manzana: La Bombonera`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            //GRUPO 4
-                            case "MBillaresLasPernicias":
-                                stringnombre = (`Manzana: Billares Las Pernicias`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFCeren":
-                                stringnombre = (`Manzana: Familia Ceren`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MColegioJesusDeNazareth":
-                                stringnombre = (`Manzana: Colegio Jesus De Nazareth`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHBelen":
-                                stringnombre = (`Manzana: Hermana Belen Garcia`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MColegioAtanacioGirardot":
-                                stringnombre = (`Manzana: Colegioo Atanacio Girardot`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFTorregrosa":
-                                stringnombre = (`Manzana: Familia Torregrosa`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFrenteLaPanaderiaLaEsquinaDel":
-                                stringnombre = (`Manzana: Frente La Panaderia La Esquina Del Sabor`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MTiendaJJ":
-                                stringnombre = (`Manzana: Tienda JJ`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-
-                            case "MFrenteColegioLasAmericas":
-                                stringnombre = (`Manzana: Frente Al Colegio Las Americas`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MVariedadesSofy":
-                                stringnombre = (`Manzana: Variedades Sofy`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHGloria":
-                                stringnombre = (`Manzana: Hermana Gloria Vega`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHGloria2":
-                                stringnombre = (`Manzana: Hermana Gloria Vega2`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MHEloina":
-                                stringnombre = (`Manzana: Hermana Eloina Palacio`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MPanaderiaEsquinaDelSabor":
-                                stringnombre = (`Manzana: Panaderia La Esquina Del Sabor`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MRestauranteChino":
-                                stringnombre = (`Manzana: Restaurante Chino`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFerreteriaElAmigo":
-                                stringnombre = (`Manzana: Ferreteria El Amigo`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MIslitaDelBrazil":
-                                stringnombre = (`Manzana: Islita Del Brazil`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MFundacionChildrenInternationa":
-                                stringnombre = (`Manzana: Fundacion Children International`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            case "MAlLadoFundacionChildrenIntern":
-                                stringnombre = (`Manzana: Al Lado De La Fundacion Children International`);
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            console.error("Error:", data.error);
-                                        } else {
-                                            alert(`${stringnombre}\nFecha: ${data.fecha ? data.fecha : "No realizada"}`);
-                                        }
-                                    })
-                                    .catch(error => console.error("Error al buscar la fecha del mapa:", error));
-                                break;
-                            default:
-                                break;
-                        }
-
-                    } else if (estado === "edita") {
-                        let nombre = this.id;
-                        let territorio = localStorage.getItem("Territorio");
-
-                        showSelectionDialog()
-                            .then(opcion => {
-                                if (!opcion) return;
-
-                                let nuevoValor = null;
-                                let nuevoColor = "green";
-                                let nuevoHecho = "no";
-
-                                if (opcion === "realizada") {
-                                    nuevoColor = "red";
-                                    nuevoValor = new Date().toISOString().split("T")[0];
-                                    nuevoHecho = "sí";
-                                } else if (opcion === "incompleta") {
-                                    nuevoColor = "yellow";
-                                    nuevoValor = new Date().toISOString().split("T")[0];
-                                    nuevoHecho = "falta";
-                                }
-
-                                this.setAttribute("fill", nuevoColor);
-
-                                if (!territorio || !nombre || !nuevoHecho) {
-                                    console.error("Datos inválidos para la actualización");
-                                    return;
-                                }
-
-                                let username = localStorage.getItem("username");
-
-
-                                fetch("https://api-db-territorios.onrender.com/updateMapa", {
-                                    method: "PUT",
-                                    headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify({
-                                        territorio: territorio,
-                                        mapa: nombre,
-                                        fecha: nuevoValor,
-                                        hecho: nuevoHecho,
-                                        username: username
-                                    })
-                                })
-                                    .then(response => response.json())
-                                    .then(data => alert(data.message))
-                                    .catch(error => console.error("Error al actualizar el mapa:", error));
-                            })
-                            .catch(error => console.error("Error al seleccionar opción:", error));
                     }
 
+                    let username = localStorage.getItem("username");
 
-                });
-            });
-        });
+
+                    fetch("https://api-db-territorios.onrender.com/updateMapa", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            territorio: territorio,
+                            mapa: nombre,
+                            fecha: nuevoValor,
+                            hecho: nuevoHecho,
+                            username: username
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => alert(data.message))
+                        .catch(error => console.error("Error al actualizar el mapa:", error));
+                })
+                .catch(error => console.error("Error al seleccionar opción:", error));
+        }
+
+
+    });
+});
+});
 
         function showSelectionDialog() {
             return new Promise((resolve) => {
