@@ -2412,7 +2412,7 @@
 
             if (selectedMap) {
                 selectedMap.style.display = "block";
-                let url = `http://127.0.0.1:8000/getVistaMapas?territorio=${encodeURIComponent(nombre)}&grupo=${encodeURIComponent(numeros)}`;
+                let url = `https://api-db-territorios.onrender.com/getVistaMapas?territorio=${encodeURIComponent(nombre)}&grupo=${encodeURIComponent(numeros)}`;
 
                 fetch(url)
                     .then(response => response.json())
@@ -2458,7 +2458,7 @@
 
                     if (estado === "ver") {
                         let stringnombre = `a`
-                        let url = `http://127.0.0.1:8000/getFechaMapa?territorio=${encodeURIComponent(mapa)}&grupo=${encodeURIComponent(grupo)}&mapa=${encodeURIComponent(nombre)}`;
+                        let url = `https://api-db-territorios.onrender.com/getFechaMapa?territorio=${encodeURIComponent(mapa)}&grupo=${encodeURIComponent(grupo)}&mapa=${encodeURIComponent(nombre)}`;
 
                         switch (`${this.id}`) {
                             case "MFCriales":
@@ -3623,7 +3623,7 @@
                                 let username = localStorage.getItem("username");
 
 
-                                fetch("http://127.0.0.1:8000/updateMapa", {
+                                fetch("https://api-db-territorios.onrender.com/updateMapa", {
                                     method: "PUT",
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify({
@@ -3681,7 +3681,7 @@
 
 
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('http://127.0.0.1:8000/usuarios')
+            fetch('https://api-db-territorios.onrender.com/usuarios')
                 .then(response => response.json())
                 .then(data => {
                     const listaUsuarios = document.getElementById("listaUsuarios");
@@ -3770,7 +3770,7 @@
         }
 
         function actualizarPassword(username, nuevaPassword) {
-            fetch(`http://127.0.0.1:8000/usuariosupdatepassword/${username}`, {
+            fetch(`https://api-db-territorios.onrender.com/usuariosupdatepassword/${username}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -3816,7 +3816,7 @@
 
         function actualizarRol(username, nuevoRol) {
             Swal.fire(`${username} ahora es ${nuevoRol.charAt(0).toUpperCase() + nuevoRol.slice(1)}.`);
-            fetch(`http://127.0.0.1:8000/usuariosupdaterole/${username}`, {
+            fetch(`https://api-db-territorios.onrender.com/usuariosupdaterole/${username}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
